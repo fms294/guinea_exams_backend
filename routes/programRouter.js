@@ -20,7 +20,7 @@ programRouter.route('/')
 })
 
 .post((req, res) => {
-    res.end(`Will add the program: ${req.body.name} with description: ${req.body.description}`);
+    res.end(`Will add the program: ${req.body.name} with description: ${req.body.description} and courses: ${req.body.courses}`);
 })
 
 .put((req, res) => {
