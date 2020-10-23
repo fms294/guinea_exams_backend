@@ -1,12 +1,11 @@
 const express = require('express');
-const Subject = require('../model/Subjects');
+const Program = require('../model/Programs');
 const auth = require('../middleware/auth');
-const User = require('../model/Users');
 const router = new express.Router();
 
-router.post('/subject/create', auth, async (req,res) => {
+router.post('/program/create', auth, async (req,res) => {
     try{
-        const subject = new Subject({
+        const subject = new Program({
             ...req.body,
             owner: req.user.id
         });
@@ -17,9 +16,9 @@ router.post('/subject/create', auth, async (req,res) => {
     }
 });
 
-router.get("/subject/readAllSubject", auth, async (req, res) => {
+router.get("/program/readAllProgram", auth, async (req, res) => {
     try {
-        const subject = await Subject.find({});
+        const subject = await Program.find({});
         if (!subject) {
             return res.status(404).send();
         }

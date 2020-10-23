@@ -71,13 +71,22 @@ userSchema.methods.generateAuthToken = async function () {
     const user = this;
     const token = jwt.sign(
         { _id: user._id.toString() },
-        process.env.JWT_SECRET_KEY,
-        { expiresIn: 3600 }
+        process.env.JWT_SECRET_KEY
     );
     //For expiresIn
     /**Eg: 60, "2 days", "10h", "7d". A numeric value is interpreted as a seconds count.
      *  If you use a string be sure you provide the time units (days, hours, etc),
      * otherwise milliseconds unit is used by default ("120" is equal to "120ms"). */
+    // if(user.tokens){
+    //     console.log('nooo',user.tokens)
+    //     return;
+    // }
+    // else{
+    //     console.log('Nothing..');
+    //     user.tokens = token;
+    //     user.save();
+    //     return token;
+    // }
     user.tokens = user.tokens.concat({ token });
     user.save();
     return token;
