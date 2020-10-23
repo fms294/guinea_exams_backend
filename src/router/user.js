@@ -61,7 +61,7 @@ router.post("/users/forgetPass", async (req, res) => {
             return res.status(404).send();
         }
         const otp = Math.floor(1000 + Math.random() * 9000);
-        sendForgetPasswordEmail(user.email, user.name, otp);
+        sendForgetPasswordEmail(user.email, user.firstname, otp);
         res.status(201).send({ user, otp });
     } catch (e) {
         console.log(e);
@@ -84,6 +84,7 @@ router.patch("/users/updatePassword/:id", async (req, res) => {
             _id: req.params.id,
         });
         if (!user) {
+            console.log('Why....', user)
             return res.status(404).send();
         }
         updates.forEach((update) => (user[update] = req.body[update]));

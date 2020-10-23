@@ -14,13 +14,13 @@ const sendForgetPasswordEmail = (email, name, otp) => {
         subject: "Verification Code For Reset Password.",
         text: `Hey ${name},
 
-                We've received a request to reset your password for Shopcart Account.
-                If you didn't make this request ignore this mail. Ohterwise here is the
-                Verfication Code : ${otp}
+                We've received a request to reset your password for Guinea Exam App Account.
+                If you didn't make this request ignore this mail. Otherwise here is the
+                Verification Code : ${otp}
                 
 
                 Thanks,
-                The Shopcart Team.`,
+                The Guinea Exam Team.`,
     };
 
     transport.sendMail(message, function (err, info) {
