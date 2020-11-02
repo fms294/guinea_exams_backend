@@ -26,7 +26,8 @@ router.post("/payment", auth, async (req, res) => {
 router.get("/checkPayment/:program_name", auth, async (req, res) => {
   try {
     const payment = await Payment.find({
-      program_name: req.params.program_name
+      program_name: req.params.program_name,
+      owner: req.user.id
     });
     if (!payment || payment.length === 0) {
       return res.status(404).send();
@@ -39,7 +40,9 @@ router.get("/checkPayment/:program_name", auth, async (req, res) => {
 
 router.get("/checkSubscription", auth, async (req, res) => {
   try {
-    const payment = await Payment.find({});
+    const payment = await Payment.find({
+      owner: req.user.id
+    });
     if (!payment) {
       return res.status(404).send();
     }
