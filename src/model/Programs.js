@@ -37,6 +37,9 @@ const programSchema = mongoose.Schema(
                   required: true,
                   trim: true
                 },
+                lesson_pdf: {
+                  type: String
+                },
                 lesson_video: [{
                   url: {
                     type: String,
